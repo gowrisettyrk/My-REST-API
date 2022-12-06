@@ -3,6 +3,7 @@ package com.rk.springboot.myfirstrestapi.survey;
 import java.net.URI;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,12 +17,8 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 @RestController
 public class SurveyResource {
 
+	@Autowired
 	private SurveyService surveyService;
-
-	public SurveyResource(SurveyService surveyService) {
-		super();
-		this.surveyService = surveyService;
-	}
 
 	// /surveys => surveys
 	@RequestMapping("/surveys")

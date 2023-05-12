@@ -15,7 +15,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class SurveyService {
 
-	private static List<Survey> surveys = new ArrayList<>();
+	static List<Survey> surveys = new ArrayList<>();
 
 	static {
 
@@ -45,6 +45,14 @@ public class SurveyService {
 		if (optinalSurvey.isEmpty())
 			return null;
 		return optinalSurvey.get();
+	}
+	
+	public String addNewSurvey(Survey survey) {
+		List<Survey> surveys = retrieveAllSurveys();
+		String randomId = genearteRandomId();
+		survey.setId(randomId);
+		surveys.add(survey);
+		return survey.getId();
 	}
 
 	public List<Question> retrieveAllSurveyQuestions(String surveyId) {

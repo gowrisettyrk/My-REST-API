@@ -57,6 +57,16 @@ public class SurveyResource {
 
 		return question;
 	}
+	
+	@RequestMapping(value = "/surveys", method = RequestMethod.POST)
+	public ResponseEntity<Object> addNewSurvey(@RequestBody Survey survey) {
+
+		String surveyId = surveyService.addNewSurvey(survey);
+		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{surveyId}").buildAndExpand(surveyId)
+				.toUri();
+		return ResponseEntity.created(location).build();
+
+	}
 
 	@RequestMapping(value = "/surveys/{surveyId}/questions", method = RequestMethod.POST)
 	public ResponseEntity<Object> addNewSurveyQuestion(@PathVariable String surveyId, @RequestBody Question question) {

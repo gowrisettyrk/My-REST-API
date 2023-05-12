@@ -18,13 +18,15 @@ public class Survey {
 
 	private String id;
 	private String title;
+
+
 	private String description;
 	private List<Question> questions;
 
 	public String getId() {
 		return id;
 	}
-
+	
 	public String getTitle() {
 		return title;
 	}
@@ -36,6 +38,11 @@ public class Survey {
 	public List<Question> getQuestions() {
 		return questions;
 	}
+	
+	public void setId(String id) {
+		this.id = id;
+	}
+
 
 	@Override
 	public String toString() {
